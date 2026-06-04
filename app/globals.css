@@ -156,6 +156,39 @@ body {
   font-weight: 600;
 }
 
+.hero-qr {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+  background: var(--ig-bg);
+  border: 1px solid var(--ig-border-input);
+  border-radius: var(--radius-md);
+}
+
+.hero-qr img {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 4px;
+}
+
+.hero-qr .qr-text {
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+  line-height: 1.5;
+}
+
+.hero-qr .qr-text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ig-text);
+  margin-bottom: 4px;
+}
+
 .main {
   flex: 1;
   padding: 16px;

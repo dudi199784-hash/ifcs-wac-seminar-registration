@@ -104,6 +104,13 @@ export default function ApplyPage() {
           <br />
           선착순 10명 · 회원 20만 / 비회원 30만
         </p>
+        <div className="hero-qr">
+          <img src="/qr.png" alt="신청 QR 코드" width={88} height={88} />
+          <p className="qr-text">
+            <strong>QR로 바로 신청</strong>
+            스캔 후 정보 입력 → DM 전송
+          </p>
+        </div>
       </section>
 
       <main className="main">
