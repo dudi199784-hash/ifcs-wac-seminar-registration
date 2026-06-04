@@ -8,14 +8,22 @@ import {
   type ApplyFormData,
 } from "@/lib/formatMessage";
 import { copyToClipboard, openInstagramDm } from "@/lib/copyText";
+import { AgilityLevelPicker } from "@/components/AgilityLevelPicker";
+import { ChoiceChips } from "@/components/ChoiceChips";
 
 const INITIAL: ApplyFormData = {
   name: "",
   phone: "",
   memberType: "member",
+  agilityLevel: "",
   dogName: "",
   note: "",
 };
+
+const MEMBER_OPTIONS = [
+  { value: "member" as const, label: "회원 20만" },
+  { value: "non-member" as const, label: "비회원 30만" },
+];
 
 export default function ApplyPage() {
   const [form, setForm] = useState<ApplyFormData>(INITIAL);
@@ -37,6 +45,9 @@ export default function ApplyPage() {
     if (!form.phone.trim()) next.phone = "연락처를 입력해 주세요.";
     else if (!/^[\d\s\-+()]{9,}$/.test(form.phone.trim())) {
       next.phone = "올바른 연락처를 입력해 주세요.";
+    }
+    if (!form.agilityLevel) {
+      next.agilityLevel = "어질리티 레벨을 선택해 주세요.";
     }
     setErrors(next);
     return Object.keys(next).length === 0;
@@ -104,13 +115,6 @@ export default function ApplyPage() {
           <br />
           선착순 10명 · 회원 20만 / 비회원 30만
         </p>
-        <div className="hero-qr">
-          <img src="/qr.png" alt="신청 QR 코드" width={88} height={88} />
-          <p className="qr-text">
-            <strong>QR로 바로 신청</strong>
-            스캔 후 정보 입력 → DM 전송
-          </p>
-        </div>
       </section>
 
       <main className="main">
@@ -211,28 +215,31 @@ export default function ApplyPage() {
               <label>
                 참가 구분<span className="req">*</span>
               </label>
-              <div className="radio-group">
-                <label className="radio-option">
-                  <input
-                    type="radio"
-                    name="memberType"
-                    checked={form.memberType === "member"}
-                    onChange={() => setForm({ ...form, memberType: "member" })}
-                  />
-                  <span>회원 20만</span>
-                </label>
-                <label className="radio-option">
-                  <input
-                    type="radio"
-                    name="memberType"
-                    checked={form.memberType === "non-member"}
-                    onChange={() =>
-                      setForm({ ...form, memberType: "non-member" })
-                    }
-                  />
-                  <span>비회원 30만</span>
-                </label>
-              </div>
+              <ChoiceChips
+                name="memberType"
+                value={form.memberType}
+                options={MEMBER_OPTIONS}
+                onChange={(memberType) =>
+                  setForm({ ...form, memberType })
+                }
+              />
+            </div>
+
+            <div className="field">
+              <label>
+                어질리티 레벨<span className="req">*</span>
+              </label>
+              <p className="field-hint">해당하는 단계를 선택해 주세요</p>
+              <AgilityLevelPicker
+                value={form.agilityLevel}
+                onChange={(agilityLevel) => {
+                  setForm({ ...form, agilityLevel });
+                  if (errors.agilityLevel) {
+                    setErrors((e) => ({ ...e, agilityLevel: undefined }));
+                  }
+                }}
+                error={errors.agilityLevel}
+              />
             </div>
 
             <div className="field">

@@ -156,39 +156,6 @@ body {
   font-weight: 600;
 }
 
-.hero-qr {
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 14px;
-  background: var(--ig-bg);
-  border: 1px solid var(--ig-border-input);
-  border-radius: var(--radius-md);
-}
-
-.hero-qr img {
-  width: 88px;
-  height: 88px;
-  flex-shrink: 0;
-  display: block;
-  border-radius: 4px;
-}
-
-.hero-qr .qr-text {
-  font-size: 12px;
-  color: var(--ig-text-secondary);
-  line-height: 1.5;
-}
-
-.hero-qr .qr-text strong {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ig-text);
-  margin-bottom: 4px;
-}
-
 .main {
   flex: 1;
   padding: 16px;
@@ -263,44 +230,145 @@ body {
   resize: vertical;
 }
 
-.radio-group {
+.field-hint {
+  font-size: 12px;
+  color: var(--ig-text-secondary);
+  margin: -4px 0 12px;
+  line-height: 1.4;
+}
+
+/* 공통 선택 칩 (회원/비회원 등) */
+.choice-chips {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 8px;
 }
 
-.radio-option {
+.choice-chip {
   position: relative;
-}
-
-.radio-option input {
-  position: absolute;
-  opacity: 0;
-  inset: 0;
-  cursor: pointer;
-}
-
-.radio-option span {
-  display: block;
-  padding: 12px 10px;
-  text-align: center;
+  padding: 13px 12px;
   font-size: 14px;
   font-weight: 600;
+  font-family: inherit;
   color: var(--ig-text-secondary);
   background: var(--ig-bg);
   border: 1px solid var(--ig-border);
   border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s,
+    transform 0.1s;
+}
+
+.choice-chip:active {
+  transform: scale(0.98);
+}
+
+.choice-chip-ring {
+  display: none;
+}
+
+.choice-chip.is-selected {
+  color: var(--ig-blue);
+  background: rgba(0, 149, 246, 0.06);
+  border-color: var(--ig-blue);
+  box-shadow: inset 0 0 0 1px rgba(0, 149, 246, 0.15);
+}
+
+.choice-chip-label {
+  position: relative;
+  z-index: 1;
+}
+
+/* 어질리티 레벨 — 그룹 + 인스타 그라데이션 선택 */
+.level-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.level-group {
+  padding: 12px;
+  background: var(--ig-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--ig-border-input);
+}
+
+.level-group-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ig-text-secondary);
+  margin-bottom: 10px;
+}
+
+.level-group-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.level-chip {
+  position: relative;
+  padding: 2px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.1s;
+}
+
+.level-chip:active {
+  transform: scale(0.97);
+}
+
+.level-chip-inner {
+  display: block;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ig-text);
+  background: var(--ig-white);
+  border: 1px solid var(--ig-border);
+  border-radius: var(--radius-pill);
+  line-height: 1.25;
   transition: all 0.15s;
 }
 
-.radio-option input:checked + span {
-  color: var(--ig-blue);
-  background: rgba(0, 149, 246, 0.08);
-  border-color: var(--ig-blue);
+@media (max-width: 360px) {
+  .level-group-chips {
+    flex-direction: column;
+  }
+
+  .level-chip {
+    width: 100%;
+  }
+
+  .level-chip-inner {
+    text-align: center;
+  }
 }
 
-.radio-option input:focus-visible + span {
-  box-shadow: 0 0 0 2px rgba(0, 149, 246, 0.2);
+.level-chip.is-selected {
+  background: var(--ig-gradient);
+  padding: 2px;
+}
+
+.level-chip.is-selected .level-chip-inner {
+  color: var(--ig-white);
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.level-chip:not(.is-selected):hover .level-chip-inner {
+  border-color: var(--ig-text-light);
+}
+
+.level-chip:focus-visible {
+  outline: 2px solid var(--ig-blue);
+  outline-offset: 2px;
+  border-radius: var(--radius-pill);
 }
 
 .error {

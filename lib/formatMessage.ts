@@ -1,7 +1,10 @@
+import type { AgilityLevel } from "./agilityLevels";
+
 export type ApplyFormData = {
   name: string;
   phone: string;
   memberType: "member" | "non-member";
+  agilityLevel: AgilityLevel | "";
   dogName: string;
   note: string;
 };
@@ -15,6 +18,7 @@ export function formatApplyMessage(data: ApplyFormData): string {
     `이름: ${data.name.trim()}`,
     `연락처: ${data.phone.trim()}`,
     `구분: ${MEMBER_LABEL[data.memberType]}`,
+    `어질리티 레벨: ${data.agilityLevel}`,
   ];
 
   if (data.dogName.trim()) {
