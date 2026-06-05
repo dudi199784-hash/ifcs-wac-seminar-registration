@@ -9,21 +9,13 @@ import {
 } from "@/lib/formatMessage";
 import { copyToClipboard, openInstagramDm } from "@/lib/copyText";
 import { AgilityLevelPicker } from "@/components/AgilityLevelPicker";
-import { ChoiceChips } from "@/components/ChoiceChips";
-
 const INITIAL: ApplyFormData = {
   name: "",
   phone: "",
-  memberType: "member",
   agilityLevel: "",
   dogName: "",
   note: "",
 };
-
-const MEMBER_OPTIONS = [
-  { value: "member" as const, label: "회원 20만" },
-  { value: "non-member" as const, label: "비회원 30만" },
-];
 
 export default function ApplyPage() {
   const [form, setForm] = useState<ApplyFormData>(INITIAL);
@@ -113,7 +105,7 @@ export default function ApplyPage() {
         <p className="meta">
           <strong>7.11(토)</strong> 07:00–12:00 · 양주독아카데미
           <br />
-          선착순 10명 · 회원 20만 / 비회원 30만
+          선착순 10명 · 참가비 300,000원
         </p>
       </section>
 
@@ -212,17 +204,10 @@ export default function ApplyPage() {
             </div>
 
             <div className="field">
-              <label>
-                참가 구분<span className="req">*</span>
-              </label>
-              <ChoiceChips
-                name="memberType"
-                value={form.memberType}
-                options={MEMBER_OPTIONS}
-                onChange={(memberType) =>
-                  setForm({ ...form, memberType })
-                }
-              />
+              <label>참가 비용</label>
+              <p className="fee-notice" role="note">
+                비용: 300,000원
+              </p>
             </div>
 
             <div className="field">

@@ -3,13 +3,10 @@ import type { AgilityLevel } from "./agilityLevels";
 export type ApplyFormData = {
   name: string;
   phone: string;
-  memberType: "member" | "non-member";
   agilityLevel: AgilityLevel | "";
   dogName: string;
   note: string;
 };
-
-const MEMBER_LABEL = { member: "회원", "non-member": "비회원" } as const;
 
 export function formatApplyMessage(data: ApplyFormData): string {
   const lines = [
@@ -17,7 +14,6 @@ export function formatApplyMessage(data: ApplyFormData): string {
     "",
     `이름: ${data.name.trim()}`,
     `연락처: ${data.phone.trim()}`,
-    `구분: ${MEMBER_LABEL[data.memberType]}`,
     `어질리티 레벨: ${data.agilityLevel}`,
   ];
 
@@ -32,6 +28,7 @@ export function formatApplyMessage(data: ApplyFormData): string {
     "",
     "일정: 7월 11일(토) 07:00~12:00",
     "장소: 양주독아카데미 (양주시 광사동 269-1)",
+    "참가비: 300,000원",
     "",
     "신청 내용 확인 부탁드립니다."
   );

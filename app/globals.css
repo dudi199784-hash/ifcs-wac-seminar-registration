@@ -237,6 +237,18 @@ body {
   line-height: 1.4;
 }
 
+.fee-notice {
+  margin: 0;
+  padding: 13px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ig-text);
+  background: var(--ig-bg);
+  border: 1px solid var(--ig-border);
+  border-radius: var(--radius-sm);
+  line-height: 1.45;
+}
+
 /* 공통 선택 칩 (회원/비회원 등) */
 .choice-chips {
   display: grid;
