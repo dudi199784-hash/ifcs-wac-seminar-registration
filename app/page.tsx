@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import {
   formatApplyMessage,
@@ -82,10 +83,19 @@ export default function ApplyPage() {
       <header className="top-bar">
         <div className="brand">
           <div className="avatar-ring">
-            <div className="avatar-ring-inner">IF</div>
+            <div className="avatar-ring-inner">
+              <Image
+                src="/aufelt-logo.png"
+                alt="아우펠트 agility club"
+                width={32}
+                height={32}
+                className="avatar-logo"
+                priority
+              />
+            </div>
           </div>
           <div className="brand-text">
-            양주독아카데미
+            양주독아카데미 · 아우펠트 agility club
             <span>세미나 신청</span>
           </div>
         </div>
