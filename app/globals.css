@@ -75,8 +75,8 @@ body {
 }
 
 .avatar-ring {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   padding: 2px;
   background: var(--ig-gradient);
@@ -96,8 +96,9 @@ body {
 .avatar-logo {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 4px;
+  object-fit: cover;
+  transform: scale(0.85);
+  transform-origin: center center;
 }
 
 .top-bar .brand-text {

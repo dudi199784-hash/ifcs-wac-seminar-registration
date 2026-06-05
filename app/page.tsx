@@ -87,8 +87,8 @@ export default function ApplyPage() {
               <Image
                 src="/aufelt-logo.png"
                 alt="아우펠트 agility club"
-                width={32}
-                height={32}
+                width={44}
+                height={44}
                 className="avatar-logo"
                 priority
               />
